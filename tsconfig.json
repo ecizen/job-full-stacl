@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/types/bcrypt.d.ts", "nodmailer.d.ts","src/types/slick.d.ts","jwt.d.ts","google.d.ts"],
   "exclude": ["node_modules"]
 }

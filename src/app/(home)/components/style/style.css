@@ -1,0 +1,52 @@
+/* Customize the scrollbar for the filter container */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px; /* Round corners for the track */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #888; /* Thumb color */
+    border-radius: 10px; /* Round corners for the thumb */
+    border: 2px solid #f1f1f1; /* Add border around the thumb */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color for the thumb on hover */
+  }
+  
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
+  }
+
+
+  .custom-scrollbar2::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .custom-scrollbar2::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px; /* Round corners for the track */
+  }
+  
+  .custom-scrollbar2::-webkit-scrollbar-thumb {
+    background-color: #0f7ccb; /* Thumb color */
+    border-radius: 10px; /* Round corners for the thumb */
+    border: 2px solid #f1f1f1; /* Add border around the thumb */
+  }
+  
+  .custom-scrollbar2::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color for the thumb on hover */
+  }
+  
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
+  }
+  
