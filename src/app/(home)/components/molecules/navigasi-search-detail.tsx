@@ -3,8 +3,8 @@ import { CircleEllipsis, MapPin, Search } from "lucide-react"
 const SearcNAvigationDetail = () => {
     return (
         <div className="bg-transparent">
-            <div className=" grid grid-cols-3  gap-2   rounded-full  z-10 ">
-                <div className=" col-span-2 grid lg:grid-cols-2 grid-cols-1 w-full bg-white rounded-full border border-gray-200">
+            <div className=" lg:grid grid-cols-3 flex  gap-2   rounded-full  z-10 ">
+                <div className=" lg:col-span-2 grid lg:grid-cols-2 grid-cols-1 w-full bg-white rounded-full border border-gray-200">
                     <div className="flex items-center lg:pr-2 ">
                         <div className="flex items-center space-x-2 w-full">
                             <div className=" h-8 rounded-l-full flex items-center justify-center pl-4">
@@ -28,8 +28,8 @@ const SearcNAvigationDetail = () => {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-full col-span-1  bg-white max-w-max">
-                    <button className="lg:px-4 lg:w-auto lg:max-w-max w-10 h-10 flex items-center justify-center gap-1 rounded-full border border-gray-200">
+                <div className="rounded-full col-span-1  bg-white max-w-max border border-gray-200">
+                    <button className="lg:px-4 lg:w-auto lg:max-w-max w-10 h-10 flex items-center justify-center gap-1 rounded-full ">
                         <CircleEllipsis size={20} className="text-blue-600" />
                         <p className="lg:block md:block hidden text-sm text-blue-600 font-semibold">More</p>
                     </button>

@@ -24,6 +24,7 @@ model User {
   updatedAt DateTime @updatedAt
   sessions  Session[]
   accounts  Account[]
+  jobPosts  JobPost[]
 }
 
 model Session {
@@ -53,5 +54,30 @@ model Account {
 
   @@unique([provider, providerAccountId]) // Pastikan kombinasi unik
 }
+
+model JobPost {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobTitle       String
+  description    String
+  jobType        String[]   
+  schedule       String[]
+  company        String
+  country       String
+  city       String
+  responsibilities String
+  skills         String[]   // Bisa diubah jadi JSON jika lebih dari satu
+  requirements   String
+  salaryAmount   String
+  paymentType    String?
+  companyLogo     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+
+
+
 
 

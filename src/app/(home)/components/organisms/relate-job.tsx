@@ -1,5 +1,5 @@
 import { CardHireData } from "@/app/(routes)/components/atoms/constant-data";
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Bookmark } from "lucide-react"
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -29,8 +29,8 @@ const RelateJob = () => {
      }
    
     return (
-        <div className="py-8 ">
-            <div className="lg:px-4 px-6">
+        <div className="mt-4 ">
+            {/* <div className="lg:px-4 px-6">
                 <Link href={`/jobs`}>
                 <button className="flex items-center space-x-2">
                     <ArrowLeft size={16} className="text-gray-400"/>
@@ -79,7 +79,53 @@ const RelateJob = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
+
+            <article className="gap-y-2 grid grid-cols-1">
+                {CardHireData.map((item)=> (
+                <div onClick={()=> handleJobClick(item.id)} key={item.id} className="bg-white rounded-md border border-gray-100 p-4 cursor-pointer">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                            <Image src={item.image} width={35} height={35} alt="logo" className="rounded-md border-2 border-gray-200"/>
+                            <div className="">
+                                <h1 className="text-xs font-semibold">{item.jobPosition}</h1>
+                                <div className="flex items-center space-x-2">
+                                    <span className="text-[10px] font-medium">{item.company}. {item.city}, {item.country}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button>
+                            <Bookmark size={18} className="text-gray-500 transition-all duration-500 ease-in-out hover:text-blue-600"/>
+                        </button>
+                    </div>
+                    <div className="mt-4">
+                        <div className="flex gap-2 ">
+                            {Array.isArray(item.jobType)
+                                ? item.jobType.map((type, index) => (
+                                    <span
+                                    key={index}
+                                    className={getJobTypeClass(type)}
+                                    >
+                                    {type}
+                                    </span>
+                                ))
+                                : (
+                                <span className={getJobTypeClass(item.jobType)}>
+                                    {item.jobType}
+                                </span>
+                                )}
+                        </div>
+                    </div>
+                    <div className="mt-4 text-">
+                        <p className="text-xs line-clamp-2 text-justify hyphens-auto lg:max-w-[82%] leading-normal text-neutral-800">{item.description}</p>
+                    </div>
+                    <div className="pt-3 mt-4 border-t border-gray-200 flex items-center justify-between">
+                        <span className="text-xs font-semibold">${item.maxSalary}-{item.minSalary}<span className="text-[10px] text-gray-500 font-normal">/year</span></span>
+                        <span className="text-[10px] text-gray-400">1 hours a go</span>
+                    </div>
+                </div>
+                ))}
+            </article>
         </div>
     )
 }

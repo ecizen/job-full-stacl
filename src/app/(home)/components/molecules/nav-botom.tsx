@@ -11,13 +11,13 @@ const NavBottom = () => {
   const navItems = [
     { href: "/home", label: "Home", Icon: Home },
     { href: "/search", label: "Search", Icon: Search },
-    { href: `/`, label: "Jobs", Icon: Briefcase },
+    { href: `/myjob`, label: "myjobs", Icon: Briefcase },
     { href: "/profile", label: "Profile", Icon: User },
   ];
 
   return (
     <div className="lg:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 shadow-lg z-50">
-      <div className="flex justify-around py-3">
+      <div className="flex justify-around pt-3 pb-6">
         {navItems.map(({ href, label, Icon }) => {
           const isActive =  pathname === href || (label === "Jobs" && pathname.startsWith("/home/"))
           return (

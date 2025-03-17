@@ -6,7 +6,7 @@ import React from "react";
 import SessionProvider from "../serverProvider";
 import Navbar from "./components/molecules/navbar";
 import NavBottom from "./components/molecules/nav-botom";
-
+import { PrimeReactProvider } from 'primereact/api'
 
 
 const geistSans = localFont({
@@ -45,8 +45,11 @@ export default function RootLayout({
       >
         <SessionProvider>
         <Navbar/>
+      <PrimeReactProvider>
+
       {children}
-      <NavBottom/>
+      </PrimeReactProvider>
+       <NavBottom/> 
         </SessionProvider>
       </body>
     </html>

@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import CardHire from '@/app/(routes)/components/molecules/CardHire';
 import { CardHireJob } from '../components/molecules/card-hire';
 import InformationJob from '../components/molecules/information-job';
+import { useState } from 'react';
 
 interface User {
     id: string; 
@@ -21,6 +22,7 @@ interface Session {
 
  const Dashboard =()=> {
     const { data: session, status } = useSession() as { data: Session | null; status: string };
+     const [layout, setLayout] = useState("grid"); 
 
   
 
@@ -30,11 +32,11 @@ interface Session {
         <div className='z-0'>
            <SearcJobCard/>
         </div>
-        <div className=' lg:px-12 px-0 py-0 w-full min-h-screen flex bg-[#f3f3f3e3] gap-6'>
+        <div className=' lg:px-12 px-0 py-0 w-full min-h-screen flex bg-[#eef2f7] gap-6'>
            <FilterJobs/> 
           <div className='w-full'>
-            <InformationJob/>
-            <CardHireJob/>
+            <InformationJob layout={layout} setLayout={setLayout}/>
+            <CardHireJob layout={layout} setLayout={setLayout}/>
           </div>
         </div>
       </main>

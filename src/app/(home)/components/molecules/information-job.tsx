@@ -1,6 +1,12 @@
-import { useState, useEffect } from "react";
+import { Grid, List, Table } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
-const InformationJob = () => {
+interface informationProps{
+  layout: any,
+  setLayout: any
+}
+
+const InformationJob:React.FC<informationProps> = ({layout, setLayout}) => {
   const rekomenedJobs = [
     { id: 1, label: "Frontend Dev" },
     { id: 2, label: "Backend Dev" },
@@ -33,18 +39,37 @@ const InformationJob = () => {
     return () => window.removeEventListener("resize", handleResize); // Bersihkan event listener
   }, []);
 
+
+
+  const layouts = [
+    { type: "grid", icon: <Grid size={16} /> , label: "Grid View"},
+    { type: "table", icon: <Table size={16} />, label: "Table View" },
+    { type: "list", icon: <List size={16} />, label: "List View" },
+  ];
+
+  const toggleLayout = () => {
+    setLayout((prevLayout: any) => {
+      const nextIndex = (layouts.findIndex((l) => l.type === prevLayout) + 1) % layouts.length;
+      return layouts[nextIndex].type;
+    });
+  };
+
   return (
     <div className="py-4">
       <div className="w-full flex justify-between items-center lg:px-0 px-6">
         <div className="flex items-center lg:justify-start justify-between space-x-4">
           <h1 className="lg:text-3xl text-xl font-semibold">Recommended Jobs</h1>
-          <h1 className="lg:text-lg text-sm font-semibold border rounded-full px-4 py-1 text-blue-600 border-blue-600">
+          <h1 className="lg:text-lg lg:block hidden text-sm font-semibold border rounded-full px-4 py-1 text-blue-600 border-blue-600">
             3650
           </h1>
         </div>
-        <p className="text-xs text-gray-400 lg:block hidden">
-          Sort by:<span className="text-black ml-1"> Last update</span>
-        </p>
+        <div className="flex justify-end mb-4">
+        <button className="px-3 h-8  border rounded-full text-xs flex items-center space-x-2 gap-2" onClick={toggleLayout}>
+          {layouts.find((l) => l.type === layout)?.label}
+          {layouts.find((l) => l.type === layout)?.icon}
+        </button>
+      </div>
+  
       </div>
 
       {/* List Job */}
