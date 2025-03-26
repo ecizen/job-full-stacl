@@ -135,9 +135,9 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-// const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
 
-// export { handler as GET, handler as POST };
+export { handler as GET, handler as POST };
 
 // Code to query the account with provider and providerAccountId
 const getAccountByProviderAndAccountId = async (provider: string, providerAccountId: string) => {
