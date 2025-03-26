@@ -17,7 +17,6 @@ interface User {
   createdAt: string;
 }
 
-// Definisi tipe props
 interface UserTableViewApplyProps {
   userData: User[];
   loading: boolean;
@@ -26,7 +25,7 @@ interface UserTableViewApplyProps {
 
 const UserTableViewApply: React.FC<UserTableViewApplyProps> = ({ userData, loading, error }) => {
   return (
-    <div className="p-4 shadow-lg rounded-lg">
+    <div className="p-4  rounded-lg">
       <Table>
         <TableCaption>List of applicants for this job post.</TableCaption>
         <TableHeader>

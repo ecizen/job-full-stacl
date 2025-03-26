@@ -38,19 +38,20 @@ const MyJobContentPage: React.FC<sessionUser> = ({ id }) => {
     }
     useEffect(() => {
         const fetchJobs = async () => {
-            try {
-                const response = await axios.get("/api/jobs", {
-                    params: { userId: session?.user?.id },
-                });
-                setJobPosts(response.data as JobPost[]);
-            } catch (error) {
-                console.error("Error fetching jobs:", error);
-            }
+          if (!session?.user?.id) return;
+      
+          try {
+            const response = await axios.get("/api/jobs/myjob");
+            console.log("Job posts:", response);
+            setJobPosts(response.data as JobPost[]);
+          } catch (error) {
+            console.error("Error fetching jobs:", error);
+          }
         };
-
+      
         fetchJobs();
-    }, [session]);
-
+      }, [session]);
+      
     const handleRemoveItem = async (jobsId: string) => {
         MySwal.fire({
             title: "Apakah Anda yakin?",

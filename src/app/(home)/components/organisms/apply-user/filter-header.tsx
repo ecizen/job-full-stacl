@@ -80,11 +80,11 @@ export const FilterHeader: FC<FilterHeaderProps> = ({ userData }) => {
   };
 
   return (
-    <div className="w-full border-b-2 border-gray-200 pb-4">
+    <div className="w-full border-b border-gray-200 pb-4">
     <h1 className="text-md font-semibold">Status User Recruitment</h1>
     <div className="mt-4 flex justify-between">
     <div className=" max-w-[230px] flex items-center relative">
-      <input className="w-full px-4 h-[35px] flex items-center border border-gray-300 rounded-xl text-xs" placeholder="Search table"></input>
+      <input className="w-full px-4 h-[35px] flex items-center border border-gray-300 rounded-xl text-xs focus:border-blue-600 peer" placeholder="Search table"></input>
       <Search className="absolute right-4 text-blue-600" size={20} />
     </div>
     <div>

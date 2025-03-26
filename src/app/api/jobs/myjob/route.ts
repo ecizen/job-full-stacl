@@ -48,31 +48,44 @@ export async function PUT(req: Request) {
 export async function GET(req: Request) {
 
   try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+    const session = await getServerSession(authOptions) as 
+      (Session & { user: { id: string } }) | null;
 
-    console.log("Received job ID:", id);
-    
-
-    if (id) {
-      const jobPost = await db.jobPost.findUnique({
-        where: { id: String(id) },
-        include: { user: true },
-      });
-
-      if (!jobPost) {
-        return NextResponse.json({ error: "Job Not Found" }, { status: 404 });
-      }
-
-      return NextResponse.json(jobPost, { status: 200 });
-    } else {
-    
-      const jobPosts = await db.jobPost.findMany({
-        include: { user: true },
-      });
-
-      return NextResponse.json(jobPosts, { status: 200 });
+    if (!session || !session.user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    const userId = session.user.id;
+
+    const user = await db.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ message: 'User not found' }, { status: 404 });
+    }
+
+    console.log("Session userId:", userId);
+    
+    
+    
+    
+    const jobPosts = await db.jobPost.findMany({
+      where: {userId},
+      select:{
+        id: true,
+        jobTitle: true,
+        company: true,
+        country: true,
+        city: true,
+        skills: true,
+      }
+    });
+    console.log("Jobs found:", jobPosts);
+
+    return NextResponse.json(jobPosts, { status: 200 });
   } catch (error) {
     console.error("Error fetching job posts:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
