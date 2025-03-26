@@ -55,7 +55,7 @@ const DetailJob: React.FC<CardHireProps> = ({
   };
 
   return (
-    <div className="p-8 relative lg:col-span-2 bg-white">
+    <div key={id} className="p-8 relative lg:col-span-2 bg-white">
       <div className="mb-6">
         <h1 className="text-xl text-blue-600 font-semibold mb-1">{jobPostition}</h1>
         <span className="text-sm font-medium">{company}, {city}</span>
@@ -138,7 +138,7 @@ const DetailJob: React.FC<CardHireProps> = ({
       )}
       <div className="flex items-center justify-center">
         <div className="flex items-center gap-4 justify-center fixed bottom-20">
-          <DialogFormApply company={company} jobPostition={jobPostition}/> 
+          <DialogFormApply jobPostId={id}  company={company} jobPostition={jobPostition}/> 
           <button className="text-sm text-neutral-800 border border-gray-300 px-4 h-10 rounded-full z-50 backdrop-blur-3xl shadow-2xl">
             add to list
           </button>

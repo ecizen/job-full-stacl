@@ -31,7 +31,6 @@ const JobDetail = () => {
 
   const [job, setJob] = React.useState<Job | null>();
 
-
   React.useEffect(() => {
     if (params.id) {
       const fetchJobs = async () => {

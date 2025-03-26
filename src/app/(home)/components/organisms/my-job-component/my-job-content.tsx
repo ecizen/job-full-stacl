@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Bookmark, Edit, Trash } from "lucide-react";
+import { Bookmark, Edit, Trash, View } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -33,6 +33,9 @@ const MyJobContentPage: React.FC<sessionUser> = ({ id }) => {
         router.push(`/myjob/update-job/${id}`);
     };
 
+    const viewApplyJob = (id: string) => {
+        router.push(`/myjob/apply-user/${id}`)
+    }
     useEffect(() => {
         const fetchJobs = async () => {
             try {
@@ -118,6 +121,12 @@ const MyJobContentPage: React.FC<sessionUser> = ({ id }) => {
                                 </div>
                             </div>
                             <div className="flex items-center space-x-2">
+                                <button 
+                                    onClick={() => viewApplyJob(data.id)} 
+                                    className="p-1 bg-green-600 rounded-sm hover:bg-blue-600 transition"
+                                >
+                                    <View size={18} className="text-white"/>
+                                </button>
                                 <button 
                                     onClick={() => handleEditNav(data.id)} 
                                     className="p-1 bg-blue-500 rounded-sm hover:bg-blue-600 transition"

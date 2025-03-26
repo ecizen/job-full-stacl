@@ -1,5 +1,5 @@
 import { getServerSession, Session } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route"; // Sesuaikan dengan path NextAuth Anda
+import { authOptions } from "../auth/[...nextauth]/route"; 
 import db from "@/lib/db";
 import { NextResponse } from "next/server";
 

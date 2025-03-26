@@ -22,9 +22,12 @@ model User {
   password  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  profile   Profile?
   sessions  Session[]
   accounts  Account[]
   jobPosts  JobPost[]
+  jobApplications JobApplication[]
+  
 }
 
 model Session {
@@ -72,10 +75,41 @@ model JobPost {
   salaryAmount   String
   paymentType    String?
   companyLogo     String?
+  jobApplications JobApplication[]
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
 
+model JobApplication {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPostId String
+  jobPost   JobPost  @relation(fields: [jobPostId], references: [id], onDelete: Cascade)
+  cvUrl     String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, jobPostId]) // Pastikan user hanya bisa melamar satu kali per pekerjaan
+}
+
+
+model Profile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  fullName    String?
+  phoneNumber String?
+  linkedIn    String?
+  portfolio   String?
+  bio         String?
+  avatarUrl   String?   
+  location    String?   // Kota / Negara pelamar
+  skills      String[]  // List keahlian dalam bentuk array
+  experience  String?   // Ringkasan pengalaman kerja
+  education   String?   // Ringkasan pendidikan
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
 
 
 
